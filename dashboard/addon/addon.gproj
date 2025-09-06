@@ -1,0 +1,23 @@
+GameProjectConfig {
+ ID "StatTrackerAddon"
+ GUID "6B4A5F2C8E3D9A7F"
+ TITLE "Player Statistics Tracker"
+ Dependencies {
+  "core"
+  "game"
+ }
+ Configurations {
+  GameProjectConfigClass PC {
+  }
+  GameProjectConfigClass XBOX_ONE {
+  }
+  GameProjectConfigClass XBOX_SERIES {
+  }
+  GameProjectConfigClass PS4 {
+  }
+  GameProjectConfigClass PS5 {
+  }
+  GameProjectConfigClass HEADLESS {
+  }
+ }
+}

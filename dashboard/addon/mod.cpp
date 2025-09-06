@@ -1,0 +1,12 @@
+name = "Player Statistics Tracker";
+author = "StatTracker Team";
+picture = "";
+actionName = "Website";
+action = "";
+description = "Tracks player statistics including kills, deaths, distance traveled, weapon usage and more. Provides web dashboard for viewing stats.";
+logo = "";
+logoOver = "";
+tooltip = "Player Statistics Tracker";
+overview = "Complete player statistics tracking system for Arma Reforger with web dashboard integration.";
+hideName = 0;
+hidePicture = 0;

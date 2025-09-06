@@ -1,0 +1,187 @@
+{
+  "timestamp": 1725420000,
+  "server_info": {
+    "name": "RBNR Test Server",
+    "player_count": 8,
+    "max_players": 64
+  },
+  "players": [
+    {
+      "playerUID": "12345678901234567890",
+      "playerName": "WarriorAlpha",
+      "kills": 15,
+      "deaths": 8,
+      "damageDealt": 3250.5,
+      "damageTaken": 1890.2,
+      "distanceTraveled": 12500.0,
+      "totalPlayTime": 7200.0,
+      "kdRatio": 1.88,
+      "mostUsedWeapon": "M4A1",
+      "weaponKills": {
+        "M4A1": 10,
+        "M9": 3,
+        "M67_Frag": 2
+      },
+      "weaponUsage": {
+        "M4A1": 85,
+        "M9": 25,
+        "M67_Frag": 8
+      }
+    },
+    {
+      "playerUID": "09876543210987654321",
+      "playerName": "SniperBravo",
+      "kills": 22,
+      "deaths": 4,
+      "damageDealt": 4100.8,
+      "damageTaken": 850.3,
+      "distanceTraveled": 8900.0,
+      "totalPlayTime": 9600.0,
+      "kdRatio": 5.5,
+      "mostUsedWeapon": "M24_SWS",
+      "weaponKills": {
+        "M24_SWS": 18,
+        "M9": 4
+      },
+      "weaponUsage": {
+        "M24_SWS": 95,
+        "M9": 15,
+        "Binoculars": 45
+      }
+    },
+    {
+      "playerUID": "11223344556677889900",
+      "playerName": "MedicCharlie",
+      "kills": 5,
+      "deaths": 12,
+      "damageDealt": 890.2,
+      "damageTaken": 2100.7,
+      "distanceTraveled": 15600.0,
+      "totalPlayTime": 8400.0,
+      "kdRatio": 0.42,
+      "mostUsedWeapon": "M9",
+      "weaponKills": {
+        "M9": 5
+      },
+      "weaponUsage": {
+        "M9": 35,
+        "First_Aid_Kit": 120,
+        "Morphine": 45
+      }
+    },
+    {
+      "playerUID": "99887766554433221100",
+      "playerName": "TankDelta",
+      "kills": 31,
+      "deaths": 6,
+      "damageDealt": 8900.4,
+      "damageTaken": 1200.1,
+      "distanceTraveled": 6800.0,
+      "totalPlayTime": 10800.0,
+      "kdRatio": 5.17,
+      "mostUsedWeapon": "M2_Bradley_25mm",
+      "weaponKills": {
+        "M2_Bradley_25mm": 25,
+        "M4A1": 4,
+        "M9": 2
+      },
+      "weaponUsage": {
+        "M2_Bradley_25mm": 180,
+        "M4A1": 45,
+        "M9": 20
+      }
+    },
+    {
+      "playerUID": "55443322110099887766",
+      "playerName": "EngineerEcho",
+      "kills": 8,
+      "deaths": 10,
+      "damageDealt": 1450.3,
+      "damageTaken": 1780.9,
+      "distanceTraveled": 18200.0,
+      "totalPlayTime": 7800.0,
+      "kdRatio": 0.8,
+      "mostUsedWeapon": "M4A1",
+      "weaponKills": {
+        "M4A1": 6,
+        "C4": 2
+      },
+      "weaponUsage": {
+        "M4A1": 55,
+        "C4": 12,
+        "Repair_Kit": 85,
+        "Shovel": 25
+      }
+    },
+    {
+      "playerUID": "77665544332211009988",
+      "playerName": "PilotFoxtrot",
+      "kills": 12,
+      "deaths": 3,
+      "damageDealt": 2800.6,
+      "damageTaken": 450.2,
+      "distanceTraveled": 25600.0,
+      "totalPlayTime": 6000.0,
+      "kdRatio": 4.0,
+      "mostUsedWeapon": "AH64_30mm",
+      "weaponKills": {
+        "AH64_30mm": 10,
+        "Hellfire": 2
+      },
+      "weaponUsage": {
+        "AH64_30mm": 120,
+        "Hellfire": 8,
+        "Flight_Controls": 240
+      }
+    }
+  ],
+  "leaderboards": {
+    "top_killers": [
+      {"name": "TankDelta", "kills": 31, "playerUID": "99887766554433221100"},
+      {"name": "SniperBravo", "kills": 22, "playerUID": "09876543210987654321"},
+      {"name": "WarriorAlpha", "kills": 15, "playerUID": "12345678901234567890"},
+      {"name": "PilotFoxtrot", "kills": 12, "playerUID": "77665544332211009988"},
+      {"name": "EngineerEcho", "kills": 8, "playerUID": "55443322110099887766"}
+    ],
+    "best_kd": [
+      {"name": "SniperBravo", "kd_ratio": 5.5, "playerUID": "09876543210987654321"},
+      {"name": "TankDelta", "kd_ratio": 5.17, "playerUID": "99887766554433221100"},
+      {"name": "PilotFoxtrot", "kd_ratio": 4.0, "playerUID": "77665544332211009988"},
+      {"name": "WarriorAlpha", "kd_ratio": 1.88, "playerUID": "12345678901234567890"},
+      {"name": "EngineerEcho", "kd_ratio": 0.8, "playerUID": "55443322110099887766"}
+    ],
+    "most_active": [
+      {"name": "TankDelta", "playtime_hours": 3.0, "playerUID": "99887766554433221100"},
+      {"name": "SniperBravo", "playtime_hours": 2.67, "playerUID": "09876543210987654321"},
+      {"name": "MedicCharlie", "playtime_hours": 2.33, "playerUID": "11223344556677889900"},
+      {"name": "EngineerEcho", "playtime_hours": 2.17, "playerUID": "55443322110099887766"},
+      {"name": "WarriorAlpha", "playtime_hours": 2.0, "playerUID": "12345678901234567890"}
+    ]
+  },
+  "events": [
+    {
+      "timestamp": 1725419900,
+      "eventType": "connect",
+      "playerUID": "12345678901234567890",
+      "playerName": "WarriorAlpha",
+      "targetUID": "",
+      "weaponName": ""
+    },
+    {
+      "timestamp": 1725419950,
+      "eventType": "kill",
+      "playerUID": "12345678901234567890",
+      "playerName": "WarriorAlpha",
+      "targetUID": "09876543210987654321",
+      "weaponName": "M4A1"
+    },
+    {
+      "timestamp": 1725419980,
+      "eventType": "kill",
+      "playerUID": "09876543210987654321",
+      "playerName": "SniperBravo",
+      "targetUID": "12345678901234567890",
+      "weaponName": "M24_SWS"
+    }
+  ]
+}

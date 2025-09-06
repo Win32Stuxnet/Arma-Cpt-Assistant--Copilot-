@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arma Reforger Stats Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="container">
+                <h1>Arma Reforger Stats Dashboard</h1>
+                <div class="server-info">
+                    <span id="server-name">Loading...</span>
+                    <span id="player-count">0/0</span>
+                    <div class="status-indicator" id="status-indicator"></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="container">
+                <!-- Navigation Tabs -->
+                <nav class="tabs">
+                    <button class="tab-button active" data-tab="overview">Overview</button>
+                    <button class="tab-button" data-tab="leaderboards">Leaderboards</button>
+                    <button class="tab-button" data-tab="players">Players</button>
+                    <button class="tab-button" data-tab="analytics">Analytics</button>
+                </nav>
+
+                <!-- Overview Tab -->
+                <div id="overview-tab" class="tab-content active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Players</h3>
+                            <div class="stat-value" id="total-players">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Total Kills</h3>
+                            <div class="stat-value" id="total-kills">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Total Deaths</h3>
+                            <div class="stat-value" id="total-deaths">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Distance Traveled</h3>
+                            <div class="stat-value" id="total-distance">0 km</div>
+                        </div>
+                    </div>
+
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <h3>Kill/Death Ratio Distribution</h3>
+                            <canvas id="kd-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Most Used Weapons</h3>
+                            <canvas id="weapons-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leaderboards Tab -->
+                <div id="leaderboards-tab" class="tab-content">
+                    <div class="leaderboards-grid">
+                        <div class="leaderboard">
+                            <h3>Top Killers</h3>
+                            <div class="leaderboard-list" id="top-killers">
+                                <div class="loading">Loading...</div>
+                            </div>
+                        </div>
+                        <div class="leaderboard">
+                            <h3>Best K/D Ratio</h3>
+                            <div class="leaderboard-list" id="best-kd">
+                                <div class="loading">Loading...</div>
+                            </div>
+                        </div>
+                        <div class="leaderboard">
+                            <h3>Most Active Players</h3>
+                            <div class="leaderboard-list" id="most-active">
+                                <div class="loading">Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Players Tab -->
+                <div id="players-tab" class="tab-content">
+                    <div class="search-bar">
+                        <input type="text" id="player-search" placeholder="Search players...">
+                    </div>
+                    <div class="players-grid" id="players-list">
+                        <div class="loading">Loading players...</div>
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div id="analytics-tab" class="tab-content">
+                    <div class="analytics-grid">
+                        <div class="chart-container">
+                            <h3>Player Activity Over Time</h3>
+                            <canvas id="activity-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Damage Dealt vs Taken</h3>
+                            <canvas id="damage-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Arma Reforger Stats Dashboard - Last updated: <span id="last-update">Never</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

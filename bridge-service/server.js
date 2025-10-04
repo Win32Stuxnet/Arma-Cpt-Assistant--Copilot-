@@ -178,15 +178,28 @@ app.get('/api/config', (req, res) => {
 
 // Process AI request based on service
 async function processAIRequest(service, prompt, model = null, settings = {}) {
-  const serviceConfig = config.aiServices[service];
-  
-  if (!serviceConfig) {
-    throw new Error(`Unsupported AI service: ${service}`);
+  const requestedService = service || 'openai';
+  let resolvedService = requestedService;
+  let serviceConfig = config.aiServices[requestedService];
+
+  if (requestedService === 'custom') {
+    resolvedService = settings.baseService || 'openai';
+    serviceConfig = {
+      endpoint:
+        settings.endpoint ||
+        settings.customEndpoint ||
+        config.aiServices[resolvedService]?.endpoint,
+      headers: { 'Content-Type': 'application/json' }
+    };
   }
-  
-  let payload, response;
-  
-  switch (service) {
+
+  if (!serviceConfig || !serviceConfig.endpoint) {
+    throw new Error(`Unsupported AI service: ${requestedService}`);
+  }
+
+  let payload;
+
+  switch (resolvedService) {
     case 'claude':
       payload = {
         model: model || 'claude-3-sonnet-20240229',
@@ -194,7 +207,7 @@ async function processAIRequest(service, prompt, model = null, settings = {}) {
         messages: [{ role: 'user', content: prompt }]
       };
       break;
-      
+
     case 'openai':
       payload = {
         model: model || 'gpt-3.5-turbo',
@@ -203,7 +216,7 @@ async function processAIRequest(service, prompt, model = null, settings = {}) {
         temperature: settings.temperature || 0.7
       };
       break;
-      
+
     case 'ollama':
       payload = {
         model: model || 'codellama',
@@ -211,21 +224,39 @@ async function processAIRequest(service, prompt, model = null, settings = {}) {
         stream: false
       };
       break;
-      
+
     default:
-      throw new Error(`Unsupported service: ${service}`);
+      throw new Error(`Unsupported service: ${resolvedService}`);
   }
-  
+
+  const headers = { ...(serviceConfig.headers || {}), ...(settings.headers || {}) };
+  const apiKey = settings.apiKey || serviceConfig.apiKey;
+
+  if (apiKey) {
+    if (resolvedService === 'claude') {
+      headers['x-api-key'] = apiKey;
+      headers['anthropic-version'] = headers['anthropic-version'] || '2023-06-01';
+    } else {
+      headers['Authorization'] = `Bearer ${apiKey}`;
+    }
+  }
+
+  if (!headers['Content-Type']) {
+    headers['Content-Type'] = 'application/json';
+  }
+
+  const endpoint = settings.endpoint || settings.customEndpoint || serviceConfig.endpoint;
+
   try {
-    const axiosResponse = await axios.post(serviceConfig.endpoint, payload, {
-      headers: serviceConfig.headers,
+    const axiosResponse = await axios.post(endpoint, payload, {
+      headers,
       timeout: settings.timeout || 60000
     });
-    
+
     // Extract response text based on service
     let responseText;
-    
-    switch (service) {
+
+    switch (resolvedService) {
       case 'claude':
         responseText = axiosResponse.data.content[0].text;
         break;
@@ -236,8 +267,10 @@ async function processAIRequest(service, prompt, model = null, settings = {}) {
         responseText = axiosResponse.data.response;
         break;
     }
-    
-    logger.info(`AI request completed successfully for service: ${service}`);
+
+    logger.info(
+      `AI request completed successfully for service: ${requestedService} (resolved as ${resolvedService})`
+    );
     return responseText;
     
   } catch (error) {

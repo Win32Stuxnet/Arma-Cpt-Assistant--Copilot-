@@ -261,7 +261,7 @@ class AIOptimizationCallback : AIServiceCallback
 //! Code explanation callback
 class AIExplanationCallback : AIServiceCallback
 {
-	protected AIResponseCallback m_UserCallback;
+        protected AIResponseCallback m_UserCallback;
 	
 	void AIExplanationCallback(AIResponseCallback userCallback)
 	{
@@ -288,7 +288,29 @@ class AIExplanationCallback : AIServiceCallback
 		explanation += rawResponse;
 		
 		return explanation;
-	}
+        }
+}
+
+//-----------------------------------------------------------------------------
+//! General chat callback that forwards raw responses
+class AIChatCallback : AIServiceCallback
+{
+        protected AIResponseCallback m_UserCallback;
+
+        void AIChatCallback(AIResponseCallback userCallback)
+        {
+                m_UserCallback = userCallback;
+        }
+
+        override void OnSuccess(string response)
+        {
+                m_UserCallback.OnSuccess(response);
+        }
+
+        override void OnError(string error)
+        {
+                m_UserCallback.OnError("Chat request failed: " + error);
+        }
 }
 
 //-----------------------------------------------------------------------------

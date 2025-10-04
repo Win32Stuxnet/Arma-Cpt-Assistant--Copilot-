@@ -19,12 +19,12 @@ class AIAssistantPlugin : WorkbenchPlugin
 	
 	//-----------------------------------------------------------------------------
 	//! Plugin initialization
-	override void Configure()
-	{
-		m_Settings = new AIAssistantSettings();
-		m_AICore = new AIAssistantCore(m_Settings);
-		m_UI = new AIAssistantUI(m_AICore);
-	}
+override void Configure()
+{
+m_Settings = new AIAssistantSettings();
+m_AICore = new AIAssistantCore(m_Settings);
+m_UI = new AIAssistantUI(m_AICore, this);
+}
 	
 	//-----------------------------------------------------------------------------
 	//! Main plugin entry point
@@ -62,19 +62,22 @@ class AIAssistantPlugin : WorkbenchPlugin
 	
 	//-----------------------------------------------------------------------------
 	//! Show main AI Assistant dialog
-	void ShowAIAssistantDialog()
-	{
-		if (m_UI)
-			m_UI.ShowMainDialog();
-	}
+void ShowAIAssistantDialog()
+{
+if (m_UI)
+{
+WorkbenchContext context = GetCurrentContext();
+m_UI.ShowMainDialog(context);
+}
+}
 	
 	//-----------------------------------------------------------------------------
 	//! Open plugin settings
-	void OpenSettingsDialog()
-	{
-		if (m_UI)
-			m_UI.ShowSettingsDialog();
-	}
+void OpenSettingsDialog()
+{
+if (m_UI)
+m_UI.ShowSettingsDialog();
+}
 	
 	//-----------------------------------------------------------------------------
 	//! Get current workbench context
